@@ -24,6 +24,86 @@ The feature selection techniques used are:
 3.Embedded Method
 
 # CODING AND OUTPUT:
-       # INCLUDE YOUR CODING AND OUTPUT SCREENSHOTS HERE
+    
+   ````
+import pandas as pd
+from scipy import stats
+import numpy as np
+````
+````
+df= pd.read_csv("/content/bmi.csv")
+df
+````
+![image](https://github.com/user-attachments/assets/6ab1248e-200e-426d-82ed-761bc991384f)
+````
+from sklearn.preprocessing import StandardScaler
+sc=StandardScaler()
+df[['Height','Weight']]=sc.fit_transform(df[['Height','Weight']])
+df.head(10)
+````
+![image](https://github.com/user-attachments/assets/bd9744c6-5541-4d0a-8171-878a159d426a)
+
+````
+max_vals=np.max(np.abs(df[['Height','Weight']]))
+max_vals
+````
+![image](https://github.com/user-attachments/assets/63dcd83f-534c-4b11-a0ee-70eb062d6a68)
+````
+from sklearn.preprocessing import MinMaxScaler
+scaler=MinMaxScaler()
+df[['Height','Weight']]=scaler.fit_transform(df[['Height','Weight']])
+df.head(10)
+
+````
+![image](https://github.com/user-attachments/assets/acb4a137-7985-4552-b0f3-8a2081d99fa9)
+````
+from sklearn.preprocessing import Normalizer
+scaler=Normalizer()
+df[['Height','Weight']]=scaler.fit_transform(df[['Height','Weight']])
+df
+````
+![image](https://github.com/user-attachments/assets/4f38e0ed-b602-4e12-b390-9a661d8860eb)
+````
+from sklearn.preprocessing import MaxAbsScaler
+sc=MaxAbsScaler()
+df[['Height','Weight']]=sc.fit_transform(df[['Height','Weight']])
+df
+````
+![image](https://github.com/user-attachments/assets/e73b51cd-e079-487e-bf71-9119a773eba1)
+````
+from sklearn.preprocessing import RobustScaler
+scaler=RobustScaler()
+df[['Height','Weight']]=sc.fit_transform(df[['Height','Weight']])
+df.head()
+````
+![image](https://github.com/user-attachments/assets/88dd43a0-b0ac-41f9-b236-c47621b006bc)
+
+````
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score,confusion_matrix
+````
+````
+data=pd.read_csv('/content/income(1) (1).csv',na_values=[" ?"])
+data
+````
+![image](https://github.com/user-attachments/assets/0aa9102e-0a67-4b08-a8b7-71d13f23fe95)
+````
+data.isnull().sum()
+````
+![image](https://github.com/user-attachments/assets/ca3a15a5-0c88-4e82-b2bf-7cc79e91194a)
+````
+missing=data[data.isnull().any(axis=1)]
+missing
+````
+![image](https://github.com/user-attachments/assets/75a30230-222c-41f7-bfea-2360289cdc4a)
+
+````
+data2=data.dropna(axis=0)
+data2
+````
+
+
 # RESULT:
        # INCLUDE YOUR RESULT HERE
