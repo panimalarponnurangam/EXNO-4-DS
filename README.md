@@ -104,6 +104,89 @@ data2=data.dropna(axis=0)
 data2
 ````
 
+![379088554-b4c4a3bc-29ea-414a-87f3-b55bdc247b91](https://github.com/user-attachments/assets/5dca8781-6cc0-4ad1-8046-20bf91c5054f)
+```
+sal=data['SalStat']
+data2['SalStat']=data['SalStat'].map({' less than or equal to 50,000':0,' greater than 50,000':1})
+print(data2['SalStat'])
+```
+
+![379088782-dd6ae99d-38d6-43a9-b2e1-5a65cd23b2c7](https://github.com/user-attachments/assets/2521577f-2e3a-4e4b-9bbf-bc6a195b42d1)
+```
+sal2=data2['SalStat']
+dfs=pd.concat([sal,sal2],axis=1)
+dfs
+```
+![379088937-9b2cfebc-fcfa-4e2d-905c-15008f45a0a0](https://github.com/user-attachments/assets/4b4a13b1-9881-46ae-9e67-e6f3d98ae0a3)
+
+```
+data2
+```
+![379089115-44494a39-c872-4c7a-8107-45ce2c819c25](https://github.com/user-attachments/assets/3187c950-c629-427a-bd57-d8e054cfa21e)
+
+```
+new_data=pd.get_dummies(data2,drop_first=True)
+new_data
+```
+![379089273-5c839ffb-9026-43be-acd3-80cc0bf5d2af](https://github.com/user-attachments/assets/4ba89541-9992-40ec-8f04-363f4cb5714f)
+
+```
+columns_list=list(new_data.columns)
+print (columns_list)
+```
+![379089526-71ac1b70-7f9d-4f07-a83e-81fc312c4a22](https://github.com/user-attachments/assets/0d4c465e-bbe5-464e-8026-2d6a2361c2ee)
+
+```
+features=list(set(columns_list))
+print(features)
+```
+![379089761-5efa78d8-f82f-40a9-9744-011e342d48cd](https://github.com/user-attachments/assets/17f9f87a-c1b4-4ab8-9c24-218c53315cb3)
+```
+y=new_data['SalStat'].values
+print(y
+```
+![379089878-c6b1eccf-c27e-472e-9e93-cd1f8978a829](https://github.com/user-attachments/assets/a0e8f85e-1af7-4cd7-a0b8-49bc05d5a5fe)
+
+```
+x=new_data[features].values
+print(x)
+```
+
+![379090052-4c3069a9-0fb1-4cb4-a2fd-731f01a764a9](https://github.com/user-attachments/assets/014cd356-33ec-40cb-8e77-5a26bd1bdf8d)
+```
+train_x, test_x, train_y, test_y=train_test_split(x,y,test_size=0.3, random_state=0)
+KNN_classifier=KNeighborsClassifier(n_neighbors=5)
+KNN_classifier.fit(train_x, train_y)
+```
+
+![379090377-cf746ca8-2502-437b-a4ee-c7eb600a41f3](https://github.com/user-attachments/assets/48574d19-4506-4d05-bd92-e98b641f1f98)
+
+```
+prediction=KNN_classifier.predict(test_x)
+confusionMatrix=confusion_matrix(test_y, prediction)
+print(confusionMatrix)
+```
+
+![379090601-2ce335c8-01f3-4123-9ab7-4a854646dfe9](https://github.com/user-attachments/assets/c8390991-1260-4e6c-8233-e3d383272342)
+
+```
+accuracy_score=accuracy_score(test_y,prediction)
+print(accuracy_score)
+```
+![379090727-8ed42482-9265-4700-8622-72e21f3aa981](https://github.com/user-attachments/assets/af516bee-ea27-42ef-8a35-28a38085d859)
+```
+print('Misclassified samples: %d' % (test_y !=prediction).sum())
+````
+![379090844-9b71dfdf-f169-473b-b411-a6fd98d583db](https://github.com/user-attachments/assets/80b26868-b188-4253-83bb-756bd53f9687)
+
+```
+data.shape
+```
+![379090981-55fa3451-ad3d-425a-bc45-e3ce186e20b6](https://github.com/user-attachments/assets/8cd7446f-3b2b-4f52-951e-b62eff236f07)
+
+
+
+
 
 # RESULT:
-       # INCLUDE YOUR RESULT HERE
+          Thus perform Feature Scaling and Feature Selection process and save the data to a file successfully.
