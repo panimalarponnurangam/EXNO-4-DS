@@ -189,4 +189,5 @@ data.shape
 
 
 # RESULT:
-          Thus perform Feature Scaling and Feature Selection process and save the data to a file successfully.
+          Thus perform Feature Scaling and Feature Selection process and save the 
+          data to a file successfully.
